@@ -7,7 +7,7 @@ import {Material} from "./material.model"
 
 enum Estado {
     PENDIENTE = "PENDIENTE",
-    EN_PROGRESO = "EN_PROGRESO",
+    EN_REPARACION = "EN_REPARACION",
     TERMINADA = "TERMINADA",
     ENVIADO = "ENVIADO",
     ENTREGADO = "ENTREGADO",
@@ -50,7 +50,7 @@ export class Incidencia {
   id_usuario: Ref<User>;
 
   @prop ({ ref: () => Material})
-  material: Ref<Material>;
+  material: Ref<Material>[];
 }
 
 export const IncidenciaModel = getModelForClass(Incidencia);
