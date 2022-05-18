@@ -37,7 +37,7 @@ export const getIncidenciaById = async (req: Request, res: Response) => {
 
 //Funcion para mostrar todos las incidencias
 export const getIncidencias = async (req: Request, res: Response) => {
-  const incidencias = await Incidencia.find();
+  const incidencias = await Incidencia.find().populate("id_tecnico").populate("id_usuario");
   return res.json(incidencias);
 };
 
