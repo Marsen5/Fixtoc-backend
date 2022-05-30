@@ -75,7 +75,7 @@ export const signIn = async (req : Request, res: Response) => {
     const role = user.role;
     const id = user._id;
 
-    res.header("x-access-token", token).json({ token, role, id, user });
+    res.header("x-access-token", token).json({ token, role, id, user }).status(200);
 
   } catch (error) {
     console.log(error);

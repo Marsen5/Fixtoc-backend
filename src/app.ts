@@ -28,6 +28,7 @@ app.use("/api", indexRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/users", usersRoutes);
 app.use("/api/incidencia", incidenciaRoutes);
+app.use("/api/tecnico", incidenciaRoutes);
 
 
 
