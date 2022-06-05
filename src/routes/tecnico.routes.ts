@@ -1,24 +1,33 @@
 import { Router } from "express";
+
+import { checkDuplicateEmail } from "../middlewares/verifySignup";
+
 const router = Router();
 
-import * as userCtrl from "../controllers/tecnico.controller";
+import * as tecnicoCtrl from "../controllers/tecnico.controller";
 
 //Mostrar todos los Usuarios
-router.get("/", userCtrl.getTecnicos);
+router.get("/", tecnicoCtrl.getTecnicos);
 
 //Buscar por id
-router.get("/:usuarioId", userCtrl.getTecnicoById);
+router.get("/:tecnicoId", tecnicoCtrl.getTecnicoById);
 
 //Eliminar
 router.delete(
-  "/:usuarioId",
-  userCtrl.deleteTecnicoyById
+  "/:tecnicoId",
+  tecnicoCtrl.deleteTecnicoyById
 );
 
 //Actualizar usuario
 router.put(
-  "/:usuarioId",
-  userCtrl.updateTecnicoById
+  "/:tecnicoId",
+  tecnicoCtrl.updateTecnicoById
+);
+
+router.post(
+  "/",
+  [checkDuplicateEmail],
+  tecnicoCtrl.createTecnico
 );
 
 export default router;

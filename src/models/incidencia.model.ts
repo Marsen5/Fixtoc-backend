@@ -51,6 +51,11 @@ export class Incidencia {
 
   @prop ({ ref: () => Material})
   material: Ref<Material>[];
+
+  @prop ({type: String})
+  imagen: string;
+
+  
 }
 
 export const IncidenciaModel = getModelForClass(Incidencia);

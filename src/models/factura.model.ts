@@ -15,7 +15,7 @@ import {Incidencia} from "./incidencia.model"
 export class Factura {
   
   @prop({ref: () => User})
-  id_cliente: Ref<User>;
+  id_usuario: Ref<User>;
 
   @prop({ref: () => Incidencia})
   id_incidencia: Ref<Incidencia>;
@@ -32,3 +32,5 @@ export class Factura {
   @prop({type: Number})
   total: number;
 }
+
+export const FacturaModel = getModelForClass(Factura);

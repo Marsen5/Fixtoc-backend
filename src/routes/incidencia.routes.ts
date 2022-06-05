@@ -19,7 +19,15 @@ router.get("/", incidenciaCtrl.getIncidencias);
 //Modificar estado incidencia
 router.put("/estado/:incidenciaId", incidenciaCtrl.updateIncidenciaState);
 
+//Modificar/asinar tecnico incidencia
+router.put("/tecnico/:tecnicoId", incidenciaCtrl.updateIncidenciaTecnico);
+
 //Modificar toda incidencia
 router.put("/:incidenciaId", incidenciaCtrl.updateIncidencia);
+
+//Eliminar
+router.delete(
+  "/:incidenciId", incidenciaCtrl.deleteIncidenciayById
+);
 
 export default router;

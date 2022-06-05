@@ -8,6 +8,8 @@ import indexRoutes from "./routes/index.routes";
 import authRoutes from "./routes/auth.routes";
 import usersRoutes from "./routes/user.routes";
 import incidenciaRoutes from "./routes/incidencia.routes";
+import tecnicoRoutes from "./routes/tecnico.routes"
+import facturaRoutes from "./routes/factura.routes";
 
 
 const app = express();
@@ -28,7 +30,8 @@ app.use("/api", indexRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/users", usersRoutes);
 app.use("/api/incidencia", incidenciaRoutes);
-app.use("/api/tecnico", incidenciaRoutes);
+app.use("/api/tecnico", tecnicoRoutes);
+app.use("/api/factura", facturaRoutes);
 
 
 

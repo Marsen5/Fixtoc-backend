@@ -1,31 +1,28 @@
 import { Request, Response } from "express";
 import { IncidenciaModel as Incidencia } from "../models/incidencia.model";
+import { FacturaModel as Factura } from "../models/factura.model";
 import { TecnicoModel as Tecnico } from "../models/tecnico.model";
 import { MaterialModel as Material } from "../models/material.model";
 import { UserModel as User } from "../models/usuario.model";
 
 
 //Crear nueva incidencia
-export const createIncidencia = async (req: Request, res: Response) => {
-  const { titulo, descripcion, coste, producto,fechaPedido, id_usuario } = req.body;
-
-  try {
-    const newInsidencia = new Incidencia({
-      titulo,
-      descripcion,
-      coste,
-      producto,
-      fechaPedido,
+export const createFactura = async (req: Request, res: Response) => {
+  const {id_incidencia, id_usuario } = req.body;
+  
+  try { 
+    const factura = new Factura({
+      id_incidencia,
       id_usuario
-    });
-
-    const incidenciaSaved = await newInsidencia.save();
-
-    res.status(201).json(incidenciaSaved);
-  } catch (error) {
-    console.log(error);
-    return res.status(500).json(error);
-  }
+});
+console.log(factura);
+// Guardamos la factura en la base de datos
+const savedFactura = await factura.save();
+res.status(201).json(savedFactura);
+} catch (error) {
+  console.log(error);
+  return res.status(500).json(error);
+}
 };
 
 //Mostrar incidencia por id
