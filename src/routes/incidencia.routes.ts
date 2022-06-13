@@ -13,6 +13,7 @@ router.get("/:incidenciaId", incidenciaCtrl.getIncidenciaById);
 //Mostrar indicencias de un usario
 router.get("/usuario/:usuarioId", incidenciaCtrl.getIncidenciasByIdUsuario);
 
+
 //Funcion para mostrar todas las incidencias
 router.get("/", incidenciaCtrl.getIncidencias);
 

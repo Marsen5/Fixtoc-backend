@@ -10,6 +10,7 @@ import usersRoutes from "./routes/user.routes";
 import incidenciaRoutes from "./routes/incidencia.routes";
 import tecnicoRoutes from "./routes/tecnico.routes"
 import facturaRoutes from "./routes/factura.routes";
+import materialRoutes from "./routes/material.routes";
 
 
 const app = express();
@@ -32,6 +33,7 @@ app.use("/api/users", usersRoutes);
 app.use("/api/incidencia", incidenciaRoutes);
 app.use("/api/tecnico", tecnicoRoutes);
 app.use("/api/factura", facturaRoutes);
+app.use("/api/material", materialRoutes);
 
 
 

@@ -21,7 +21,8 @@ export const createIncidencia = async (req: Request, res: Response) => {
 
     const incidenciaSaved = await newInsidencia.save();
 
-    res.status(201).json(incidenciaSaved);
+    const id = newInsidencia._id
+    res.status(201).json({incidenciaSaved, id});
   } catch (error) {
     console.log(error);
     return res.status(500).json(error);
@@ -31,7 +32,7 @@ export const createIncidencia = async (req: Request, res: Response) => {
 //Mostrar incidencia por id
 export const getIncidenciaById = async (req: Request, res: Response) => {
   const { incidenciaId } = req.params;
-  const incidencia = await Incidencia.findById(incidenciaId).populate("id_usuario");
+  const incidencia = await Incidencia.findById(incidenciaId).populate("id_usuario").populate("material");
   res.status(200).send(incidencia);
 }
 
@@ -46,7 +47,8 @@ export const getIncidenciasByIdUsuario = async (req: Request, res: Response) => 
   const { usuarioId } = req.params;
   const incidencias = await Incidencia.find({ id_usuario: usuarioId });
   return res.json(incidencias);
-}
+};
+
 
 //Funcion para modificar estado de la incidencia
 export const updateIncidenciaState = async (req: Request, res: Response) => {
@@ -89,7 +91,7 @@ export const updateIncidencia = async (req: Request, res: Response) => {
 export const deleteIncidenciayById = async (req: Request, res: Response) => {
   const { incidenciaId } = req.params;
 
-  await User.findByIdAndDelete(incidenciaId);
+  await Incidencia.findByIdAndDelete(incidenciaId);
 
   // el codigo 200 estaria bien tambien
   res.status(204).send();
